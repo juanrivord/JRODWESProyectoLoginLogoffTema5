@@ -14,6 +14,21 @@
             "database": "mysql",
             "username": "adminsql",
             "password": "paso"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "daw200.local.ieslossauces.es",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "servidorAmor",
+            "database": "DBJRODWESProyectoLoginLogoffTema5",
+            "username": "adminsql",
+            "password": "paso"
         }
     ]
 }
