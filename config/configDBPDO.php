@@ -7,15 +7,15 @@
 
 if (date_default_timezone_get()!="Europe/Madrid") date_default_timezone_set("Europe/Madrid");
 
-define('DBNAME', "DBJRODWESProyectoTema5");
+define('DBNAME', "DBJRODWESProyectoLoginLogoffTema5");
 define('PASSWORD', "paso");
 
 
 // CONF CLASE
 
-define('HOST', "mysql:host=10.199.8.97;dbname=DBJRODWESProyectoTema5");
-define('SERVER', "10.199.8.97");
-define('USER', "userJRODWESProyectoTema5");
+define('HOST', "mysql:host=http://daw201.local.ieslossauces.es/;dbname=DBJRODWESProyectoLoginLogoffTema5");
+define('SERVER', "http://daw201.local.ieslossauces.es/");
+define('USER', "userJRODWESProyectoLoginLogoffTema5");
 
 // CONF CASA
 
