@@ -26,7 +26,7 @@
             "port": 3306,
             "driver": "MariaDB",
             "name": "servidorAmor",
-            "database": "DBJRODWESProyectoLoginLogoffTema5",
+            "database": "mysql",
             "username": "adminsql",
             "password": "paso"
         }
