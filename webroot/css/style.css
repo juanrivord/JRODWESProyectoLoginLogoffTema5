@@ -1,0 +1,312 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 30 sept 2026, 12:37:04
+    Author     : juan.rivord
+*/
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #cbd3dc;
+    color: #334155;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+main {
+    max-width: 1400px;
+    margin: -30px auto 40px auto;
+    padding: 30px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+thead {
+    background-color: #474a8a;
+    color: white;
+}
+
+th {
+    padding: 14px 16px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+th:nth-child(2) {
+    text-align: left;
+}
+
+td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.92rem;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f1f5f9;
+    transition: background-color 0.2s ease;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-ejecutar {
+    background-color: #28a745;
+}
+
+.btn-codigo {
+    background-color: #17a2b8;
+}
+
+.bloqueado {
+    display: inline-block;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: #808080;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.buscador {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+}
+
+.buscador form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.buscador input[type="text"],
+.buscador input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.buscador button {
+    padding: 8px 16px;
+    background-color: #474a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.buscador button:hover {
+    opacity: 0.9;
+}
+
+.error {
+    color: #ef4444;
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.buscador, 
+form[name="formulario"] {
+    max-width: 550px; 
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.buscador .titulo-busqueda,
+form[name="formulario"] h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+form[name="formulario"] label {
+    font-weight: 500;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.buscador input[type="text"],
+.buscador input[type="date"],
+form[name="formulario"] input[type="text"],
+form[name="formulario"] input[type="date"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.buscador input:focus,
+form[name="formulario"] input:focus {
+    outline: none;
+    border-color: #474a8a;
+    box-shadow: 0 0 0 3px rgba(71, 74, 138, 0.15);
+}
+
+/* Botones de envío / búsqueda dentro de formularios */
+.buscador button,
+form[name="formulario"] input[type="submit"] {
+    background-color: #474a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+.buscador button:hover,
+form[name="formulario"] input[type="submit"]:hover {
+    background-color: #3b3e73;
+    transform: translateY(-1px);
+}
+
+/* Mensajes de error en validaciones */
+.error,
+form[name="formulario"] span[style*="color:red;"] {
+    color: #ef4444 !important;
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 4px;
+}
+
+footer {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 0.9rem;
+    border-top: #1e293b solid 1px;
+}
+
+footer address {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer a {
+    display: inline-block;
+    text-decoration: none;
+    color: #94a3b8;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: white;
+}
+
+footer img {
+    background-color: white;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+footer img:hover {
+    transform: translateY(-2px);
+}
