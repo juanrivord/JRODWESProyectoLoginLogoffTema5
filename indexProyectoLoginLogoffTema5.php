@@ -13,13 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DWES. Juan Rivera Ordoñez</title>
     <link rel="stylesheet" href="./webroot/css/style.css">
-    <script src="./webroot/script/script.js"></script>
 </head>
 
 <body>
     <header id="inicio">
-        <img src="./webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
         <h1>Proyecto Login Logoff Tema 5</h1>
+        <h2>Inicio Publico</h2>
     </header>
     <main>
 
@@ -27,6 +26,8 @@
         <form action="" method="POST">
             <button name="btnLogin"><span>Iniciar Sesion</span></button>
         </form>
+
+        <img src="./webroot/images/modelo.png" alt="modelo de datos">
 
 
     </main>

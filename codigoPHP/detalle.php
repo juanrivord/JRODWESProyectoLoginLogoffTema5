@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="../webroot/css/style.css">
     </head>
     <header id="inicio">
-            <img src="../webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
-        <h1>Detalles de conexion</h1>
+        <h1>Proyecto Login Logoff Tema 5</h1>
+        <h2>Detalles</h2>
     </header>
     <body>
         
