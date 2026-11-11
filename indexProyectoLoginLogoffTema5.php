@@ -16,56 +16,7 @@
     </header>
     <main>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Script</th>
-                    <th>Código</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>CreaDBJRODWESProyectoTema5</td>
-                    <td><a class="btn btn-codigo" href="mostrarcodigo/muestraCreaSQL.php">Código</a></td>
-                </tr>
-                <tr>
-                    <td>CargaInicialDBJRODWESProyectoTema5</td>
-                    <td><a class="btn btn-codigo" href="mostrarcodigo/muestraCargaSQL.php">Código</a></td>
-                </tr>
-                <tr>
-                    <td>BorraDBJRODWESProyectoTema5</td>
-                    <td><a class="btn btn-codigo" href="mostrarcodigo/muestraBorraSQL.php">Código</a></td>
-                </tr>
-                <tr>
-                    <td>ConfigDBPDO</td>
-                    <td><a class="btn btn-codigo" href="mostrarcodigo/muestraConfigDBPDO.php">Código</a></td>
-                </tr>
-            </tbody>
-        </table>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre de la práctica</th>
-                    <th>Ejecutar</th>
-                    <th>Código</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr>
-                    <td>0</td>
-                    <td>Aplicación LoginLogoff</td>
-                    <td><a class="btn btn-ejecutar" href="./codigoPHP/Login.php">Ejecutar</a></td>
-                    <td>
-                        <a class="btn btn-codigo" href="./mostrarcodigo/muestraLogin.php">Codigo login</a>
-                        <a class="btn btn-codigo" href="./mostrarcodigo/muestraPrograma.php">Codigo programa</a>
-                    </td>
-                </tr>
-            </tbody>
-            
-        </table>
         
     </main>
     <footer>
