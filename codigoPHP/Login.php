@@ -4,6 +4,11 @@
         header("Location: ../indexProyectoLoginLogoffTema5.php");
         exit;
     } 
+
+    if (isset($_REQUEST['btnLogin'])) {
+        header("Location: ./inicioPrivado.php");
+        exit;
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,6 +25,7 @@
         <main>
 
         <form action="" method="POST">
+            <button name="btnLogin"><span>Iniciar sesion</span></button>
             <button name="btnCancelar"><span>Cancelar</span></button>
         </form>
 
