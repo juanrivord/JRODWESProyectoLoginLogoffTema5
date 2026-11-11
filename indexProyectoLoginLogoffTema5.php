@@ -56,9 +56,12 @@
             <tbody>
                 <tr>
                     <td>0</td>
-                    <td>Prueba de indice</td>
-                    <td><a class="bloqueado" href="./codigoPHP/ejercicio1.php">Ejecutar</a></td>
-                    <td><a class="bloqueado" href="./mostrarcodigo/muestraEjercicio1.php">Codigo</a></td>
+                    <td>Aplicación LoginLogoff</td>
+                    <td><a class="bloqueado" href="./codigoPHP/login.php">Ejecutar</a></td>
+                    <td>
+                        <a class="bloqueado" href="./mostrarcodigo/muestraLogin.php">Codigo login</a>
+                        <a class="bloqueado" href="./mostrarcodigo/muestraPrograma.php">Codigo programa</a>
+                    </td>
                 </tr>
             </tbody>
             
