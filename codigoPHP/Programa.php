@@ -2,16 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Ejercicio 1</title>
+        <title>Programa</title>
         <link rel="stylesheet" href="../webroot/css/style.css">
-        <style>
-            .azul{
-                color:blue;
-            }
-            .rojo{
-                color:red;
-            }
-        </style>
     </head>
     <header id="inicio">
             <img src="../webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
