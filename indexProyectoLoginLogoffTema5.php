@@ -57,10 +57,10 @@
                 <tr>
                     <td>0</td>
                     <td>Aplicación LoginLogoff</td>
-                    <td><a class="bloqueado" href="./codigoPHP/login.php">Ejecutar</a></td>
+                    <td><a class="btn btn-ejecutar" href="./codigoPHP/Login.php">Ejecutar</a></td>
                     <td>
-                        <a class="bloqueado" href="./mostrarcodigo/muestraLogin.php">Codigo login</a>
-                        <a class="bloqueado" href="./mostrarcodigo/muestraPrograma.php">Codigo programa</a>
+                        <a class="btn btn-codigo" href="./mostrarcodigo/muestraLogin.php">Codigo login</a>
+                        <a class="btn btn-codigo" href="./mostrarcodigo/muestraPrograma.php">Codigo programa</a>
                     </td>
                 </tr>
             </tbody>

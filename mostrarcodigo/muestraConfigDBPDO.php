@@ -13,14 +13,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         $archivo = '../config/configDBPDO.php';
  
         if ($archivo && file_exists($archivo) ) {
-        echo "<a href='../indexProyectoTema5.php'>⬅ Volver al inicio</a><hr>";
+        echo "<a href='../indexProyectoLoginLogoffTema5.php'>⬅ Volver al inicio</a><hr>";
         echo "<h2>Viendo el codigo de: " . htmlspecialchars($archivo) . "</h2>";
         highlight_file($archivo);
         // funcion nativa de PHP, lee el archivo y lo imprime con colores.
         
         } else {
         echo "<h2>Error: El archivo no existe.</h2>";
-        echo "<a href='../indexProyectoTema5.php'>⬅ Volver al inicio</a>";
+        echo "<a href='../indexProyectoLoginLogoffTema5.php'>⬅ Volver al inicio</a>";
         }
         ?>
     </body>

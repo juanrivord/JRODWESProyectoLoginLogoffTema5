@@ -23,7 +23,7 @@
         require_once '../core/231018libreriaValidacion.php'; 
         require_once '../config/configDBPDO.php';
 
-        echo "<a href='../indexProyectoTema4.php'>⬅ Volver al inicio</a><br><br>";
+        echo "<a href='../indexProyectoLoginLogoffTema5.php'>⬅ Volver al inicio</a><br><br>";
         
 
         ?>
