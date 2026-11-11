@@ -11,19 +11,32 @@
 
 <body>
     <header id="inicio">
-            <img src="./webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
-        <h1>TEMA 5: Desarrollo de aplicaciones web - LoginLogoff</h1>
+        <img src="./webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
+        <h1>Proyecto Login Logoff Tema 5</h1>
     </header>
     <main>
 
+        <?php
+
+            if (isset($_POST['btnLogin'])) {
+                header("Location: login.php");
+                exit();
+            } 
         
-        
+        ?>
+        <form action="" method="POST">
+            <input type="button" value="Iniciar Sesion" name="btnLogin">
+        </form>
+
+
     </main>
     <footer>
         <address>
             <p>&copy; 2025-2026 <span><a href="../index.html">Juan Rivera Ordoñez</a></span>- I.E.S. Los Sauces</p>
-            <a href="https://github.com/juanrivord/JRODWESProyectoLoginLogoffTema5"><img src="./webroot/images/github.png" alt="Imagen de github"></a>
+            <a href="https://github.com/juanrivord/JRODWESProyectoLoginLogoffTema5"><img
+                    src="./webroot/images/github.png" alt="Imagen de github"></a>
         </address>
     </footer>
 </body>
+
 </html>
