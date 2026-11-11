@@ -7,18 +7,9 @@
     </head>
     <header id="inicio">
             <img src="../webroot/images/logo.png" alt="Logo de I.E.S. Los Sauces" class="logo">
-        <h1>TEMA 5: Desarrollo de aplicaciones web</h1>
+        <h1>Proyecto Login Logoff Tema 5</h1>
     </header>
     <body>
-
-        <?php
-        require_once '../core/231018libreriaValidacion.php'; 
-        require_once '../config/configDBPDO.php';
-
-        echo "<a href='../indexProyectoTema4.php'>⬅ Volver al inicio</a><br><br>";
-        
-
-        ?>
         
     </body>
     <footer>
