@@ -4,7 +4,7 @@
         header("Location: ./codigoPHP/login.php");
         exit;
     } 
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +26,7 @@
         <img src="./webroot/images/modelo.png" alt="modelo de datos">
 
         <form action="" method="POST">
-            <button name="btnLogin"><span>Iniciar Sesion</span></button>
+            <button name="btnLogin" class="btn btn-login"><span>Iniciar Sesion</span></button>
         </form>
 
     </main>
