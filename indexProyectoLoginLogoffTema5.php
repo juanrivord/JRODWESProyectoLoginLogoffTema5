@@ -23,11 +23,11 @@
     </header>
     <main>
 
-        <img src="./webroot/images/modelo.png" alt="modelo de datos">
-
         <form action="" method="POST">
             <button name="btnLogin" class="btn btn-login"><span>Iniciar Sesion</span></button>
         </form>
+
+        <img src="./webroot/images/modelo.png" alt="modelo de datos">
 
     </main>
     <footer>
