@@ -1,8 +1,8 @@
 -- Creación de la base de datos, tabla y usuario de aplicación
 
-CREATE DATABASE IF NOT EXISTS DBJRODWESProyectoLoginLogoffTema5;
+CREATE DATABASE IF NOT EXISTS DBJRODWESProyectoTema5;
 
-USE DBJRODWESProyectoLoginLogoffTema5;
+USE DBJRODWESProyectoTema5;
 
 CREATE TABLE IF NOT EXISTS T02_Departamento (
   T02_CodDepartamento  CHAR(3) PRIMARY KEY,
@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS T01_Usuario (
     T01_ImagenUsuario MEDIUMBLOB DEFAULT NULL
 ) ENGINE=InnoDB;
 
-CREATE USER 'userJRODWESProyectoLoginLogoffTema5'@'%' 
+CREATE USER 'userJRODWESProyectoTema5'@'%' 
   IDENTIFIED BY 'paso';
 
-GRANT ALL ON DBJRODWESProyectoLoginLogoffTema5.* to 'userJRODWESProyectoLoginLogoffTema5'@'%';
+GRANT ALL ON DBJRODWESProyectoTema5.* to 'userJRODWESProyectoTema5'@'%';
 
 FLUSH PRIVILEGES;

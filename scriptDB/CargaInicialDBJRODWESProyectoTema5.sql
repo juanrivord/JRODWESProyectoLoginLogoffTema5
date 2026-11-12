@@ -1,6 +1,6 @@
 -- Carga inicial
 
-USE DBJRODWESProyectoLoginLogoffTema5;
+USE DBJRODWESProyectoTema5;
 
 INSERT INTO T02_Departamento
   (T02_CodDepartamento,
