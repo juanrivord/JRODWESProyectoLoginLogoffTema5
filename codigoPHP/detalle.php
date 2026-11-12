@@ -1,7 +1,7 @@
 <?php
 
-    if (isset($_REQUEST['btnCerrarSesion'])) {
-        header("Location: ../indexProyectoLoginLogoffTema5.php");
+    if (isset($_REQUEST['btnVolver'])) {
+        header("Location: ./inicioPrivado.php");
         exit;
     } 
 
@@ -22,8 +22,20 @@
         <main>
 
          <form action="" method="POST">
-            <button name="btnCerrarSesion"><span>Cerrar sesion</span></button>
+            <button name="btnVolver"><span>Volver</span></button>
         </form>
+
+        <?php
+        
+        foreach ($GLOBALS as $nombre => $contenido) {
+                echo "<h2>$nombre</h2>";
+                echo "<pre>";
+                print_r($contenido);
+                echo "</pre>";
+                echo "<hr>";
+            }
+
+        ?>
 
         </main>
         

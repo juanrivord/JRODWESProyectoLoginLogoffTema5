@@ -19,7 +19,7 @@
     </head>
     <header id="inicio">
         <h1>Proyecto Login Logoff Tema 5</h1>
-        <h2>Inicio Prviado</h2>
+        <h2>Inicio Privado</h2>
     </header>
     <body>
         <main>
