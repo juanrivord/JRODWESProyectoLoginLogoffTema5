@@ -24,6 +24,8 @@
     <body>
         <main>
 
+        <h2>Bienvenido!</h2>
+
          <form action="" method="POST">
             <button name="btnDetalle"><span>Detalles</span></button>
             <button name="btnCerrarSesion"><span>Cerrar sesion</span></button>
