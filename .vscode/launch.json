@@ -10,8 +10,9 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
+            "stopOnEntry": false,
             "pathMappings": {
-                "/var/www/html": "${workspaceFolder}"
+                "/var/www/html/JRODWESProyectoLoginLogoffTema5": "${workspaceFolder}"
             }
         }
     ]
