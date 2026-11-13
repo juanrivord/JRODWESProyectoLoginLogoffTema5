@@ -277,8 +277,21 @@ form[name="formulario"] input[type="submit"] {
     width: 100%;
 }
 
-form[name="formulario"] input[type="submit"] .btn.btn-login {
+form[name="formulario"] input[type="submit"].btn.btn-login {
     background-color: #22C55E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+form[name="formulario"] input[type="submit"].btn.btn-cancelar {
+    background-color: #FF0000;
     color: white;
     border: none;
     border-radius: 6px;

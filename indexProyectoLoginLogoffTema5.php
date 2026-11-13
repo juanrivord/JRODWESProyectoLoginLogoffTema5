@@ -23,7 +23,7 @@
     </header>
     <main>
 
-        <form action="" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
             <button name="btnLogin" class="btn btn-login"><span>Iniciar Sesion</span></button>
         </form>
 

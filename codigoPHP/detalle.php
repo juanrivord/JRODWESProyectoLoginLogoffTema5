@@ -21,8 +21,8 @@
 
         <main>
 
-         <form action="" method="POST">
-            <button name="btnVolver"><span>Volver</span></button>
+         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
+            <input type="submit" name="btnVolver" value="Volver"/>
         </form>
 
         <?php
