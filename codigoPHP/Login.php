@@ -6,95 +6,102 @@
  * Proyecto Tema 5 - Inicio de sesion y cierre de sesion
  */
 
+//Inicia la sesion
 session_start();
 
-// libreria de validacion y configuracion de la base de datos
-require_once '../core/231018libreriaValidacion.php';
-require_once '../config/configDBPDOClase.php';
-
-// Si el usuario pulsa cancelar, se le redirige al indice publico
-if (isset($_REQUEST['cancelar'])) {
-    header("Location: ../indexLoginLogoffTema5.php");
+// Si el usuario ya ha iniciado la sesion, lo redireccionamos al accesso privado
+if (isset($_SESSION['usuarioJRODWESLoginLogoffTema5'])) {
+    header("Location: inicioPrivado.php");
     exit;
 }
 
-$entradaOK = true;
-$aErrores = ['usuario' => null, 'password' => null];
+// comprueba si el boton cancelar fue pulsado
+if (isset($_REQUEST['cancelar'])) {
+    // encaso de que si, vuelve al indice
+    header("Location: ../indexProyectoLoginLogoffTema5.php");
+    exit;
+}
+require_once '../config/configDBPDO.php';
+require_once '../core/231018libreriaValidacion.php';
 
-// Procesamiento del formulario cuando se pulsa iniciar sesion
-if (isset($_REQUEST['login'])) {
-    // Validacion de los campos mediante la libreria
-    $aErrores['usuario'] = validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'], 8, 4, 1);
-    $aErrores['password'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['password'], 16, 4, 1);
+//Inicializacion de variables
+$entradaOK = true; // Variable que nos indica que todo va bien
+$usuarioEncontrado = true; //Variable que nos indica si el usuario del login existe
+//Array donde recogemos los mensajes de error
+$aError = [
+    'usuario' => "",
+    'contrasena' => ""
+];
 
-    // Recorremos el array de errores para comprobar si hay alguno
-    foreach ($aErrores as $error) {
-        if ($error != null) {
+// Comprueba si el boton login fue pulsado
+if (isset($_REQUEST["login"])) {
+    // Validar Entrada
+    $aError["usuario"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["usuario"], 1000, 1, 1);
+    // utilizar para la creacion de la contrasena, no la validacion
+    //$aError["contrasena"] = validacionFormularios::validarPassword($passwd, $maximo, $minimo, $tipo, $obligatorio);
+    $aError["contrasena"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["contrasena"], 1000, 1, 1);
+
+    foreach ($aError as $value) {
+        if (!empty($value)) {
             $entradaOK = false;
         }
     }
-
-    // Si la validacion es correcta, comprobamos las credenciales en la BBDD
-    if ($entradaOK) {
-        try {
-            // Instanciamos el objeto PDO
-            $miDB = new PDO(HOST, USER, PASSWORD);
-
-            // Usamos la logica de encriptacion SHA2(CONCAT(usuario, password), 256)
-            $consulta = $miDB->prepare(
-                "SELECT * FROM T01_Usuario 
-                 WHERE T01_CodUsuario = :usuario 
-                 AND T01_Password = SHA2(CONCAT(:usuarioConcatenado, :password), 256)"
-            );
-
-            // Pasamos los parametros
-            $consulta->execute([
-                ':usuario' => $_REQUEST['usuario'],
-                ':usuarioConcatenado' => $_REQUEST['usuario'],
-                ':password' => $_REQUEST['password']
-            ]);
-
-            // Recuperamos el objeto usuario
-            $oUsuario = $consulta->fetchObject();
-
-            // Si el usuario no existe o la contraseña es incorrecta
-            if (!$oUsuario) {
-                $aErrores['password'] = "Usuario o contraseña incorrectos.";
-                $entradaOK = false;
-            } else {
-
-                // Actualizamos el numero de conexiones y la fecha de ultima conexion
-                $actualizar = $miDB->prepare(
-                    "UPDATE T01_Usuario 
-                     SET T01_NumConexiones = T01_NumConexiones + 1, 
-                         T01_FechaHoraUltimaConexion = NOW() 
-                     WHERE T01_CodUsuario = :usuarioUpdate"
-                );
-                $actualizar->execute([':usuarioUpdate' => $oUsuario->T01_CodUsuario]);
-
-                // Guardamos en la sesion los datos requeridos para la vista privada
-                $_SESSION['usuarioMDCDWESLoginLogoff'] = $oUsuario->T01_CodUsuario;
-                $_SESSION['descUsuario'] = $oUsuario->T01_DescUsuario;
-                // Sumamos 1 al numero de conexiones para reflejar el acceso actual
-                $_SESSION['numConexiones'] = $oUsuario->T01_NumConexiones + 1;
-                $_SESSION['fechaHoraUltimaConexionAnterior'] = $oUsuario->T01_FechaHoraUltimaConexion;
-
-                // Cerramos conexion y redirigimos al area privada
-                unset($miDB);
-                header("Location: ./inicioPrivado.php");
-                exit;
-            }
-        } catch (PDOException $miExcepcionPDO) {
-            $aErrores['password'] = "Error de conexion: " . $miExcepcionPDO->getMessage();
-            $entradaOK = false;
-        } finally {
-            unset($miDB);
-        }
-    }
-} else {
-    // Si no se ha enviado el formulario, forzamos a que no se procese
+}
+// El formulario no se ha enviado nunca
+else {
     $entradaOK = false;
 }
+// si los datos estan bien,
+// comprueba si el usuario existe en la base de datos
+if ($entradaOK) {
+    try {
+
+        $miDB = new PDO(HOST, USER, PASSWORD);
+
+        $sqlSelect = <<<sql
+                SELECT * FROM T01_Usuario
+                WHERE T01_CodUsuario = :codUsuario and T01_Password = SHA2(:password,256)
+                sql;
+        $selectUsuarioContrasena = $miDB->prepare($sqlSelect);
+        // trim elimina espacios antes y despues del texto
+        $selectUsuarioContrasena->execute([
+            ':codUsuario' => trim($_REQUEST["usuario"]),
+            ':password' => trim($_REQUEST["usuario"] . $_REQUEST["contrasena"])
+        ]);
+
+        if ($selectUsuarioContrasena->rowCount() != 1) {
+            $usuarioEncontrado = false;
+        } else {
+            //actualizamos los datos del usuario
+            $actualizarUsuario = $miDB->prepare(
+                "UPDATE T01_Usuario 
+                            SET T01_NumConexiones = T01_NumConexiones + 1, 
+                                T01_FechaHoraUltimaConexion = NOW() 
+                            WHERE T01_CodUsuario = :usuarioUpdate"
+            );
+            $actualizarUsuario->execute([':usuarioUpdate' => $_REQUEST["usuario"]]);
+
+            //creamos el objeto usuario
+            $aUsuario = $selectUsuarioContrasena->fetch();
+            // Guardamos en la sesion los datos requeridos para la vista privada en
+            $_SESSION['usuarioJRODWESLoginLogoffTema5'] = $aUsuario;
+
+            // Cerramos conexion y redirigimos al area privada
+            unset($miDB);
+            header("Location: ./inicioPrivado.php");
+            exit;
+        }
+    } catch (PDOException $miExceptionPDO) {
+
+
+        echo "<h3 style='margin-top:0;'>Error en la base de datos.</h3>";
+        echo "<p><b>Mensaje:</b> " . $miExceptionPDO->getMessage() . "</p>";
+        echo "<p><b>Código:</b> " . $miExceptionPDO->getCode() . "</p>";
+    } finally {
+        unset($miDB);
+    }
+}
+// Mostrar Login
 ?>
 <!DOCTYPE html>
 <html>
@@ -115,26 +122,22 @@ if (isset($_REQUEST['login'])) {
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formulario" novalidate>
 
             <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario"
-                value="<?php echo !empty($_REQUEST["usuario"]) ? $_REQUEST["usuario"] : '' ?>" />
+            <input type="text" name="usuario" id="usuario" value="<?php echo !empty($_REQUEST["usuario"]) ? $_REQUEST["usuario"] : '' ?>" />
 
             <?php echo !empty($aError["usuario"]) ? "<span style='color:red;'>" . $aError['usuario'] . "</span>" : '' ?>
 
-            <br>
-
-            <label for="contrasena">Contrasena:</label>
-            <input type="password" name="contrasena" id="contrasena"
-                value="<?php echo !empty($_REQUEST["contrasena"]) ? $_REQUEST["contrasena"] : '' ?>" />
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" name="contrasena" id="contrasena" value="<?php echo !empty($_REQUEST["contrasena"]) ? $_REQUEST["contrasena"] : '' ?>" />
 
             <?php echo !empty($aError["contrasena"]) ? "<span style='color:red;'>" . $aError['contrasena'] . "</span>" : '' ?>
 
-            <br>
-
-            <input type="submit" name="btnLogin" id="btnLogin" class="btn btn-login" value="Log in" />
-            <input type="submit" name="btnCancelar" id="btnCancelar" class="btn btn-cancelar" value="Cancelar" />
+            <br />
 
             <?php echo !$usuarioEncontrado ? "<span style='color:red;'>Usuario no encontrado, nombre de usuario o contrasena incorrecta</span>" : '' ?>
 
+            <input type="submit" name="login" id="login" class="btn btn-login" value="Log in" />
+            <input type="submit" name="cancelar" id="cancelar" class="btn btn-cancelar" value="Cancelar" />
+            
         </form>
 
     </main>

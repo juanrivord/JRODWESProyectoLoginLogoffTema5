@@ -1,10 +1,17 @@
 <?php
+session_start();
 
-    if (isset($_REQUEST['btnVolver'])) {
-        header("Location: ./inicioPrivado.php");
-        exit;
-    } 
+// Si el usuario no esta logueado, lo echamos al login
+if (!isset($_SESSION['usuarioJRODWESLoginLogoffTema5'])) {
+    header("Location: login.php");
+    exit;
+}
 
+// boton de Volver
+if (isset($_REQUEST['btnVolver'])) {
+    header("Location: inicioPrivado.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html>

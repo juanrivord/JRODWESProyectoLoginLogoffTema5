@@ -208,10 +208,12 @@ tbody tr:hover {
 }
 
 .error {
-    color: #ef4444;
-    font-size: 0.85rem;
-    display: block;
+    color: #dc3545;
+    font-size: 13px;
+    font-weight: bold;
+    height: 18px;
     margin-top: 5px;
+    display: block;
 }
 
 .buscador, 
@@ -316,6 +318,34 @@ form[name="formulario"] span[style*="color:red;"] {
     font-size: 0.85rem;
     display: block;
     margin-top: 4px;
+}
+
+h3 {
+        color: #474a8a;
+        margin-top: 25px;
+}
+
+pre {
+        background-color: #2d2d2d;
+        color: #a6e22e;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-size: 13px;
+}
+
+.vacio {
+        color: #999;
+        font-style: italic;
+        padding: 10px;
+        background-color: #f8f9fc;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        border-left: 3px solid #ccc;
+}
+
+li{
+    color: black;
 }
 
 footer {

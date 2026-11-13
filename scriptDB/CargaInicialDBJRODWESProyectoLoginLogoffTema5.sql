@@ -24,4 +24,5 @@ INSERT INTO T01_Usuario
  T01_Perfil)
  VALUES
 ('admin', SHA2(CONCAT('admin', 'paso'), 256), 'Administrador del sistema', NOW(), 1, 'administrador'),
+('heraclio', SHA2(CONCAT('heraclio', 'paso'), 256), 'Heraclio Borbujo Moran', NOW(), 1, 'usuario'),
 ('juan', SHA2(CONCAT('juan', 'paso'), 256), 'Juan Rivera Ordoñez', NOW(), 1, 'usuario');

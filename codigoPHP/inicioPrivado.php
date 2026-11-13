@@ -1,14 +1,26 @@
 <?php
+//Iniciamos la sesion
+session_start();
 
-    if (isset($_REQUEST['btnCerrarSesion'])) {
-        header("Location: ../indexProyectoLoginLogoffTema5.php");
-        exit;
-    } 
+// Si el usuario no ha iniciado la sesion, lo echamos al login
+if (!isset($_SESSION['usuarioJRODWESLoginLogoffTema5'])) {
+    header("Location: login.php");
+    exit;
+}
 
-    if (isset($_REQUEST['btnDetalle'])) {
-        header("Location: ./detalle.php");
-        exit;
-    } 
+// comprueba si el boton cerrar sesion fue pulsado
+if (isset($_REQUEST['btnCerrarSesion'])) {
+    session_unset();
+    session_destroy();
+    header("Location: ../indexProyectoLoginLogoffTema5.php");
+    exit();
+}
+// comprueba si el boton entrar detalle fue pulsado
+if (isset($_REQUEST['btnDetalle'])) {
+    header("Location: ./detalle.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +36,7 @@
     <body>
         <main>
 
-        <h2>Bienvenido!</h2>
+        <h2>Bienvenido <strong><?php echo $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'];?></strong></h2>
 
          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
 
