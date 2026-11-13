@@ -28,8 +28,8 @@
 
          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
 
-            <input type="submit" name="btnDetalle" class="btn btn-login"><span>Detalles</span></input>
-            <input type="submit" name="btnCerrarSesion" class="btn btn-cancelar"><span>Cerrar sesion</span></input>
+            <input type="submit" name="btnDetalle" class="btn btn-login" value="Detalles"/>
+            <input type="submit" name="btnCerrarSesion" class="btn btn-cancelar" value="Cerrar Sesion"/>
 
         </form>
 
