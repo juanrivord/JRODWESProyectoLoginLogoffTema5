@@ -26,16 +26,38 @@
         </form>
 
         <?php
-        
-        foreach ($GLOBALS as $nombre => $contenido) {
-                echo "<h2>$nombre</h2>";
-                echo "<pre>";
-                print_r($contenido);
-                echo "</pre>";
-                echo "<hr>";
-            }
+                $aSuperglobales = [
+                    '$_SESSION' => $_SESSION,
+                    '$_COOKIE' => $_COOKIE,
+                    '$_SERVER' => $_SERVER,
+                    '$_REQUEST' => $_REQUEST,
+                    '$_GET' => $_GET,
+                    '$_POST' => $_POST,
+                    '$_FILES' => $_FILES,
+                    '$_ENV' => $_ENV
+                ];
 
-        ?>
+                // Recorrido del array
+                foreach ($aSuperglobales as $nombreSuperglobal => $arraySuperglobal) {
+                    echo "<h3 class='superGlobal'>$nombreSuperglobal</h3>";
+
+                    if (!empty($arraySuperglobal)) {
+                        echo "<ul>";
+
+                        foreach ($arraySuperglobal as $nombre => $contenido) {
+                            if (is_array($contenido)) {
+                                $contenido = "<pre>" . print_r($contenido, true) . "</pre>";
+                            }
+                            echo "<li><span style='color:blue;font-weight:bold'>$nombre : </span>" . htmlspecialchars($contenido) . "</li>";
+                        }
+                        echo "</ul>";
+                    } else {
+                        echo "<div class='vacio'>La variable $nombreSuperglobal esta vacia en este momento.</div>";
+                    }
+                }
+
+                phpinfo();
+                ?>
 
         </main>
         
