@@ -95,24 +95,24 @@
     <body>
         <main>
 
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" novalidate>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formulario" novalidate>
                 
                 <label for="usuario" >Usuario:</label>
                 <input type="text" name="usuario" id="usuario" value="<?php echo !empty($_REQUEST["usuario"]) ? $_REQUEST["usuario"]: '' ?>"/>
 
                 <?php echo !empty($aError["usuario"]) ? "<span style='color:red;'>" . $aError['usuario'] . "</span>": '' ?>
 
-                <br/><br/>
+                <br>
                 
                 <label for="contrasena" >Contrasena:</label>
                 <input type="password" name="contrasena" id="contrasena" value="<?php echo !empty($_REQUEST["contrasena"]) ? $_REQUEST["contrasena"]: '' ?>"/>
 
                 <?php echo !empty($aError["contrasena"]) ? "<span style='color:red;'>" . $aError['contrasena'] . "</span>": '' ?>
 
-                <br/>
+                <br>
 
-                <input type="submit" name="btnLogin" id="btnLogin" value="Log in"/>
-                <input type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar"/>
+                <input type="submit" name="btnLogin" id="btnLogin" class="btn btn-login" value="Log in"/>
+                <input type="submit" name="btnCancelar" id="btnCancelar" class="btn btn-cancelar" value="Cancelar"/>
                 
                 <?php echo !$usuarioEncontrado ? "<span style='color:red;'>Usuario no encontrado, nombre de usuario o contrasena incorrecta</span>": '' ?>
 

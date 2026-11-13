@@ -143,10 +143,15 @@ tbody tr:hover {
 }
 
 .btn-login{
-    display: block;
+    display: inline-block;
     margin: 0 auto;
-    background-color: #4f90ff;
-    
+    background-color: #22C55E;
+}
+
+.btn-cancelar{
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #FF0000;
 }
 
 .bloqueado {
@@ -240,7 +245,8 @@ form[name="formulario"] label {
 .buscador input[type="text"],
 .buscador input[type="date"],
 form[name="formulario"] input[type="text"],
-form[name="formulario"] input[type="date"] {
+form[name="formulario"] input[type="date"],
+form[name="formulario"] input[type="password"]{
     width: 100%;
     padding: 10px 14px;
     border: 1px solid #cbd5e1;
@@ -270,6 +276,19 @@ form[name="formulario"] input[type="submit"] {
     transition: background-color 0.2s, transform 0.1s;
     width: 100%;
 }
+
+/* form[name="formulario"] input[type="submit"] .btn .btn-login {
+    background-color: #474a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+} */
 
 .buscador button:hover,
 form[name="formulario"] input[type="submit"]:hover {
