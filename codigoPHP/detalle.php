@@ -1,4 +1,11 @@
 <?php
+/**
+ * @author Juan Rivera Ordóñez
+ * @since 12/11/2026
+ * Proyecto Tema 5 - Inicio de sesion y cierre de sesion
+ */
+
+//Iniciamos la sesion
 session_start();
 
 // Si el usuario no esta logueado, lo echamos al login
