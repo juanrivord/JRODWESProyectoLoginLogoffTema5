@@ -46,7 +46,7 @@ if (isset($_REQUEST['btnVolver'])) {
 
                 // Recorrido del array
                 foreach ($aSuperglobales as $nombreSuperglobal => $arraySuperglobal) {
-                    echo "<h3 class='superGlobal'>$nombreSuperglobal</h3>";
+                    echo "<h3>$nombreSuperglobal</h3>";
 
                     if (!empty($arraySuperglobal)) {
                         echo "<ul>";
