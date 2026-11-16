@@ -169,15 +169,12 @@ unset($miDB);
     </main>
 
     <footer>
-        <address>
-            <p class="foo-txt">
-                © 2026 <span><a class="miweb-link" href="../../JRODWESProyectoDWES/indexProyectoDWES.php">Juan Miguel
-                        Dominguez</a></span> Todos los derechos reservados.
-                <a href="https://github.com/Juan-D07/JRODWESLoginLogoffTema5" target="_blank"> <img class="github"
-                        src="../webroot/images/github.png" alt="Github logo" /></a>
-            </p>
-        </address>
-    </footer>
+    <address>
+        <p>&copy; 2025-2026 <span><a href="../../index.html">Juan Rivera Ordoñez</a></span>- I.E.S. Los Sauces</p>
+        <a href="https://github.com/juanrivord/JRODWESProyectoLoginLogoffTema5" target="_blank"><img src="../webroot/images/github.png" alt="Imagen de github"></a>
+        <a href="../indexProyectoLoginLogoffTema5.php"><img src="../webroot/images/casita.png" alt="Imagen de una casita"></a>
+    </address>
+</footer>
 
 </body>
 
