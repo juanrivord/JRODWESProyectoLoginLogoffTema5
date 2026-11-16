@@ -92,8 +92,6 @@ if ($entradaOK) {
             exit;
         }
     } catch (PDOException $miExceptionPDO) {
-
-
         echo "<h3 style='margin-top:0;'>Error en la base de datos.</h3>";
         echo "<p><b>Mensaje:</b> " . $miExceptionPDO->getMessage() . "</p>";
         echo "<p><b>Código:</b> " . $miExceptionPDO->getCode() . "</p>";
