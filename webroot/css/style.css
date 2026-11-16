@@ -148,6 +148,12 @@ tbody tr:hover {
     background-color: #22C55E;
 }
 
+.btn-signin{
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #161F32;
+}
+
 .btn-cancelar{
     display: inline-block;
     margin: 0 auto;
@@ -304,6 +310,7 @@ form[name="formulario"] input[type="submit"].btn.btn-cancelar {
     transition: background-color 0.2s, transform 0.1s;
     width: 100%;
 }
+
 
 .buscador button:hover,
 form[name="formulario"] input[type="submit"]:hover {

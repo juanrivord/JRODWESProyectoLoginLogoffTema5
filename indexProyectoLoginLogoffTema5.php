@@ -5,6 +5,11 @@
         exit;
     } 
 
+    if (isset($_REQUEST['btnSignIn'])) {
+        header("Location: ./codigoPHP/registro.php");
+        exit;
+    } 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,6 +30,7 @@
 
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
             <button name="btnLogin" class="btn btn-login"><span>Iniciar Sesion</span></button>
+            <button name="btnSignIn" class="btn btn-signin"><span>Registrarse</span></button>
         </form>
 
         <img src="./webroot/images/modelo.png" alt="modelo de datos">
