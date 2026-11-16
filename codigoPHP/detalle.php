@@ -59,8 +59,11 @@ if (isset($_REQUEST['btnVolver'])) {
                         echo "<ul>";
 
                         foreach ($arraySuperglobal as $nombre => $contenido) {
+
                             if (is_array($contenido)) {
-                                $contenido = "<pre>" . print_r($contenido, true) . "</pre>";
+                                $contenido = print_r($contenido, true);
+                            } else {
+                                echo (string)$contenido;
                             }
                             echo "<li><span style='color:blue;font-weight:bold'>$nombre : </span>" . htmlspecialchars($contenido) . "</li>";
                         }

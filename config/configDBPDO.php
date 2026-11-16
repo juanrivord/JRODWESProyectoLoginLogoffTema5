@@ -13,14 +13,14 @@ define('PASSWORD', "paso");
 
 // CONF CLASE
 
-// define('HOST', "mysql:host=http://daw201.local.ieslossauces.es/;dbname=DBJRODWESProyectoLoginLogoffTema5");
-// define('SERVER', "http://daw201.local.ieslossauces.es/");
-// define('USER', "userJRODWESProyectoLoginLogoffTema5");
+define('HOST', "mysql:host=daw201.local.ieslossauces.es;dbname=DBJRODWESProyectoLoginLogoffTema5");
+define('SERVER', "daw201.local.ieslossauces.es");
+define('USER', "userJRODWESProyectoLoginLogoffTema5");
 
 // CONF MAQUINA
-define('HOST', "mysql:host=10.199.8.97;dbname=DBJRODWESProyectoLoginLogoffTema5");
-define('SERVER', "10.199.8.97");
-define('USER', "adminsql");
+// define('HOST', "mysql:host=10.199.8.97;dbname=DBJRODWESProyectoLoginLogoffTema5");
+// define('SERVER', "10.199.8.97");
+// define('USER', "adminsql");
 
 
 // CONF CASA
