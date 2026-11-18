@@ -46,8 +46,10 @@ if (isset($_REQUEST['btnDetalle'])) {
 
          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
 
-            <input type="submit" name="btnDetalle" class="btn" value="Detalles"/>
-            <input type="submit" name="btnCerrarSesion" class="btn btn-cancelar" value="Cerrar Sesion"/>
+            <input type="submit" name="btnDetalle" class="btn" value="Aplicar Cambios"/>
+            <input type="submit" name="btnCambiarPassword" class="btn btn-codigo" value="Cambiar Contraseña"/>
+            <input type="submit" name="btnEliminarCuenta" class="btn btn-cancelar" value="Eliminar Cuenta"/>
+            <input type="submit" name="btnCancelar" class="btn btn-cancelar" value="Cancelar"/>
 
         </form>
 
