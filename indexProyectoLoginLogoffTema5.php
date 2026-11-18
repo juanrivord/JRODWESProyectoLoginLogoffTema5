@@ -1,5 +1,11 @@
 <?php
 
+    $weekTime = 7*24*60*60; // 604800 segundos son una semana
+    $idioma = 'es/ES';
+    setcookie ('idioma', $idioma, time() + $weekTime);
+
+    
+
     if (isset($_REQUEST['btnLogin'])) {
         header("Location: ./codigoPHP/login.php");
         exit;
