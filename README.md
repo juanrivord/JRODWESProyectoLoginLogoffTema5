@@ -18,7 +18,7 @@ Aplicación web en **PHP** desarrollada para la asignatura **Desarrollo Web en E
 ```
 ├── indexProyectoLoginLogoffTema5.php   # Inicio público
 ├── codigoPHP/
-│   ├── Login.php                       # Formulario de inicio de sesión
+│   ├── login.php                       # Formulario de inicio de sesión
 │   ├── registro.php                    # Alta de usuarios
 │   ├── inicioPrivado.php               # Área privada
 │   └── detalle.php                     # Variables superglobales y phpinfo()
