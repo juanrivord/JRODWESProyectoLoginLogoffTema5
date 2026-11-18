@@ -48,7 +48,27 @@ if (isset($_REQUEST['btnEditarPerfil'])) {
     <body>
         <main>
 
-        <h2>Bienvenido <strong><?php echo $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'];?></strong></h2>
+        <?php 
+        
+        if($_COOKIE['idioma'] = 'es/ES'){
+
+            echo "<h2>Bienvenido! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
+        }
+
+        if($_COOKIE['idioma'] = 'en/GB'){
+
+            echo "<h2>Welcome! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
+        }
+
+        if($_COOKIE['idioma'] = 'pt/PT'){
+
+            echo "<h2>Welcome! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
+        }
+        
+        ?>
+
+        
+        
 
          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
 
@@ -57,6 +77,8 @@ if (isset($_REQUEST['btnEditarPerfil'])) {
             <input type="submit" name="btnCerrarSesion" class="btn btn-cancelar" value="Cerrar Sesion"/>
 
         </form>
+
+        
 
         </main>
     

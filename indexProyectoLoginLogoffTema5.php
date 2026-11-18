@@ -31,6 +31,9 @@
     <header id="inicio">
         <h1>Proyecto Login Logoff Tema 5</h1>
         <h2>Inicio Publico</h2>
+        <img src="./webroot/images/ES.png" alt="imagen bandera españa"/>
+        <img src="./webroot/images/GB.png" alt="imagen bandera reino unido"/>
+        <img src="./webroot/images/PT.png" alt="imagen bandera portugal"/>
     </header>
     <main>
 
