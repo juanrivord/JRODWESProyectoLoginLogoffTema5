@@ -27,6 +27,12 @@ if (isset($_REQUEST['btnDetalle'])) {
     exit();
 }
 
+// comprueba si el boton editar perfil fue pulsado
+if (isset($_REQUEST['btnEditarPerfil'])) {
+    header("Location: ./editarPerfil.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,6 +53,7 @@ if (isset($_REQUEST['btnDetalle'])) {
          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
 
             <input type="submit" name="btnDetalle" class="btn" value="Detalles"/>
+            <input type="submit" name="btnEditarPerfil" class="btn btn-login" value="Editar Perfil"/>
             <input type="submit" name="btnCerrarSesion" class="btn btn-cancelar" value="Cerrar Sesion"/>
 
         </form>
