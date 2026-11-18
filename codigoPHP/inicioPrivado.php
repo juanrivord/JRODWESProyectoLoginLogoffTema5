@@ -50,21 +50,20 @@ if (isset($_REQUEST['btnEditarPerfil'])) {
 
         <?php 
         
-        if($_COOKIE['idioma'] = 'es/ES'){
+        $nombre = $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'];
 
-            echo "<h2>Bienvenido! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
+        // Saludo segun el idioma guardado en la cookie (español por defecto)
+        switch ($_COOKIE['idioma'] ?? 'es/ES') {
+            case 'en/GB':
+                echo "<h2>Welcome! <strong>" . $nombre . "</strong></h2>";
+                break;
+            case 'pt/PT':
+                echo "<h2>Bem-vindo! <strong>" . $nombre . "</strong></h2>";
+                break;
+            default:
+                echo "<h2>¡Bienvenido! <strong>" . $nombre . "</strong></h2>";
         }
 
-        if($_COOKIE['idioma'] = 'en/GB'){
-
-            echo "<h2>Welcome! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
-        }
-
-        if($_COOKIE['idioma'] = 'pt/PT'){
-
-            echo "<h2>Welcome! <strong>" . $_SESSION['usuarioJRODWESLoginLogoffTema5']['T01_DescUsuario'] . "</strong></h2>";
-        }
-        
         ?>
 
         

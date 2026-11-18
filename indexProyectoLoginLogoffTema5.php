@@ -1,8 +1,22 @@
 <?php
 
     $weekTime = 7*24*60*60; // 604800 segundos son una semana
-    $idioma = 'es/ES';
-    setcookie ('idioma', $idioma, time() + $weekTime);
+    $idiomasValidos = ['es/ES', 'en/GB', 'pt/PT'];
+
+    // Si se ha pulsado una bandera, guardamos el idioma elegido en la cookie
+    if (isset($_REQUEST['idioma']) && in_array($_REQUEST['idioma'], $idiomasValidos)) {
+        setcookie('idioma', $_REQUEST['idioma'], time() + $weekTime);
+        header('Location: ' . $_SERVER['PHP_SELF']); // recargamos para que $_COOKIE tenga el valor nuevo
+        exit;
+    }
+
+    // Si no existe la cookie, ponemos español por defecto
+    if (!isset($_COOKIE['idioma'])) {
+        $idioma = 'es/ES';
+        setcookie('idioma', $idioma, time() + $weekTime);
+    } else {
+        $idioma = $_COOKIE['idioma'];
+    }
 
     
 
@@ -31,9 +45,11 @@
     <header id="inicio">
         <h1>Proyecto Login Logoff Tema 5</h1>
         <h2>Inicio Publico</h2>
-        <img src="./webroot/images/ES.png" alt="imagen bandera españa"/>
-        <img src="./webroot/images/GB.png" alt="imagen bandera reino unido"/>
-        <img src="./webroot/images/PT.png" alt="imagen bandera portugal"/>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="idiomas">
+            <button type="submit" name="idioma" value="es/ES"><img src="./webroot/images/ES.png" alt="imagen bandera españa"/></button>
+            <button type="submit" name="idioma" value="en/GB"><img src="./webroot/images/GB.png" alt="imagen bandera reino unido"/></button>
+            <button type="submit" name="idioma" value="pt/PT"><img src="./webroot/images/PT.png" alt="imagen bandera portugal"/></button>
+        </form>
     </header>
     <main>
 
