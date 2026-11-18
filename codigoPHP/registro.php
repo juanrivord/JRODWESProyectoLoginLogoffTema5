@@ -19,7 +19,7 @@ $aError = [
 // Comprueba si el boton crear fue pulsado
 if (isset($_REQUEST["crearUsuario"])) {
     // Validacion de entrada Entrada
-    $aError["usuario"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["usuario"], 100, 1, 1);
+    $aError["usuario"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["usuario"], 8, 1, 1);
     // utilizar para la creacion de la contrasena, no la validacion
     $aError["contrasena"] = validacionFormularios::validarPassword($_REQUEST["contrasena"], 32, 4, 2, 1);
     $aError["descripcion"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["descripcion"], 100, 1, 1);
@@ -56,22 +56,25 @@ if (isset($_REQUEST["crearUsuario"])) {
         echo "<h3 style='margin-top:0;'>Error en la base de datos.</h3>";
         echo "<p><b>Mensaje:</b> " . $miExceptionPDO->getMessage() . "</p>";
         echo "<p><b>Código:</b> " . $miExceptionPDO->getCode() . "</p>";
+        $entradaOK = false;
         unset($miDB);
     }
-}
+
 // El formulario no se ha enviado nunca
-else {
+}else {
     $entradaOK = false;
 }
+
 // si los datos estan bien,
 if ($entradaOK) {
     //Inicia la sesion
     session_start();
 
     //insertamos los datos del usuario
-    $insertarUsuario = $miDB->prepare(
-        "INSERT INTO T01_Usuario VALUES (:usuario, SHA2(:contrasena, 256), :descripcion, 1, now(), 'usuario')"
-    );
+    $insertarUsuario = $miDB->prepare(<<<sql
+    INSERT INTO T01_Usuario (T01_CodUsuario, T01_Password, T01_DescUsuario, T01_FechaHoraUltimaConexion, T01_NumConexiones, T01_Perfil)
+    VALUES (:usuario, SHA2(:contrasena, 256), :descripcion, NOW(), 1, 'usuario')
+    sql);
     $insertarUsuario->execute([
         ':usuario' => trim($_REQUEST["usuario"]),
         ':contrasena' => trim($_REQUEST["usuario"]) . trim($_REQUEST["contrasena"]),
@@ -146,7 +149,7 @@ unset($miDB);
                     </tr>
 
                     <tr>
-                        <th><label for="contrasena">Descripcion:</label></th>
+                        <th><label for="descripcion">Descripcion:</label></th>
                         <td><input type="text" name="descripcion" id="descripcion" value="<?php echo !empty($_REQUEST["descripcion"]) ? $_REQUEST["descripcion"] : '' ?>" />
                         </td>
                         <?php echo !empty($aError["descripcion"]) ? "<td><span style='color:red;'>" . $aError['descripcion'] . "</span></td>" : '' ?>
