@@ -38,6 +38,38 @@ $aUsuario = $_SESSION['usuarioJRODWESLoginLogoffTema5'];
 require_once '../config/configDBPDO.php';
 require_once '../core/231018libreriaValidacion.php';
 
+// comprueba si el boton eliminar cuenta fue pulsado
+// (antes el usuario ha aceptado el mensaje de seguridad del navegador)
+if (isset($_REQUEST['btnEliminarCuenta'])) {
+
+    try {
+
+        $miDB = new PDO(HOST, USER, PASSWORD);
+
+        $deleteUsuario = $miDB->prepare("DELETE FROM T01_Usuario
+             WHERE T01_CodUsuario = :usuario");
+
+        $deleteUsuario->execute([
+            ':usuario' => $aUsuario['T01_CodUsuario']
+        ]);
+
+        unset($miDB);
+
+        // Destruccion de la sesion y vuelta al index
+        session_unset();
+        session_destroy();
+        header("Location: ../indexProyectoLoginLogoffTema5.php");
+        exit();
+
+    } catch (PDOException $miExceptionPDO) {
+        echo "<h3 style='margin-top:0;'>Error en la base de datos.</h3>";
+        echo "<p><b>Mensaje:</b> " . $miExceptionPDO->getMessage() . "</p>";
+        echo "<p><b>Código:</b> " . $miExceptionPDO->getCode() . "</p>";
+    } finally {
+        unset($miDB);
+    }
+}
+
 //Inicializacion de variables
 $entradaOK = true; // Variable que nos indica que todo va bien
 //Array donde recogemos los mensajes de error
@@ -141,7 +173,10 @@ if ($entradaOK) {
 
             <hr>
 
-            <input type="submit" name="btnEliminarCuenta" class="btn btn-cancelar" value="Eliminar Cuenta" />
+            <input type="submit" name="btnEliminarCuenta" class="btn btn-cancelar" value="Eliminar Cuenta"
+                onclick="return confirm('¡ATENCIÓN!\n\nVas a eliminar la cuenta de <?php echo $aUsuario['T01_CodUsuario']; ?>
+                .\nSe borrarán todos tus datos de forma permanente y esta acción NO se puede deshacer
+                .\n\n¿Seguro que quieres eliminar tu cuenta?');" />
 
         </form>
 
