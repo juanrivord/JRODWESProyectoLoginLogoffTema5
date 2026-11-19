@@ -39,41 +39,52 @@ if (isset($_REQUEST['btnVolver'])) {
             <input type="submit" name="btnVolver" value="Volver"/>
         </form>
 
-        <?php
+        <?php              
+                // RECORRIDO DE TODAS LAS SUPERGLOBALES CON FOREACH
+                echo "<h2>Recorrido de variables Superglobales</h2>";
+
+                // Array asociativo que agrupa todas las variables superglobales de PHP
                 $aSuperglobales = [
                     '$_SESSION' => $_SESSION,
-                    '$_COOKIE' => $_COOKIE,
-                    '$_SERVER' => $_SERVER,
+                    '$_COOKIE'  => $_COOKIE,
+                    '$_SERVER'  => $_SERVER,
                     '$_REQUEST' => $_REQUEST,
-                    '$_GET' => $_GET,
-                    '$_POST' => $_POST,
-                    '$_FILES' => $_FILES,
-                    '$_ENV' => $_ENV
+                    '$_GET'     => $_GET,
+                    '$_POST'    => $_POST,
+                    '$_FILES'   => $_FILES,
+                    '$_ENV'     => $_ENV
                 ];
 
                 // Recorrido del array
                 foreach ($aSuperglobales as $nombreSuperglobal => $arraySuperglobal) {
-                    echo "<h3>$nombreSuperglobal</h3>";
+                    echo "<h3>Contenido de $nombreSuperglobal</h3>";
 
                     if (!empty($arraySuperglobal)) {
-                        echo "<ul>";
+                        echo "<table class='tabla-superglobales'>";
+                        echo "<tr><th>Clave</th><th>Contenido</th></tr>";
 
                         foreach ($arraySuperglobal as $nombre => $contenido) {
-
+                            echo "<tr>";
+                            echo "<td style='width: 20%;'><strong>" . $nombre . "</strong></td>";
+                            
                             if (is_array($contenido)) {
-                                $contenido = print_r($contenido, true);
+                                echo "<td><pre>" . print_r($contenido, true) . "</pre></td>";
                             } else {
-                                echo (string)$contenido;
+                                echo "<td>" . (string)$contenido . "</td>";
                             }
-                            echo "<li><span style='color:blue;font-weight:bold'>$nombre : </span>" . htmlspecialchars($contenido) . "</li>";
+                            
+                            echo "</tr>";
                         }
-                        echo "</ul>";
+                        echo "</table>";
                     } else {
-                        echo "<div class='vacio'>La variable $nombreSuperglobal esta vacia en este momento.</div>";
+                        echo "<div class='vacio'>La variable $nombreSuperglobal está vacía en este momento.</div>";
                     }
                 }
-
-                phpinfo();
+                
+                 // PHPINFO()
+                echo "<h2>Informacion de phpinfo</h2>";
+                echo "<p>Mediante la función <code>phpinfo()</code> se obtiene informacion detallada sobre la configuracion actual de PHP en el servidor.</p>";
+                echo "<a href='?ver_phpinfo=1' target='_blank' class='btn-phpinfo'>Ejecutar y ver phpinfo() completo en nueva pestaña</a>";
                 ?>
 
         </main>
