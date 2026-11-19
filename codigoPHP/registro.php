@@ -27,6 +27,16 @@ if (isset($_REQUEST["crearUsuario"])) {
     // comprobar si las dos contrasena son iguales
     $aError["contrasena"] = $_REQUEST["contrasena"] === $_REQUEST["segundaContrasena"] ? $aError["contrasena"] : "Error al crear la cuenta, las contrasenas no son iguales";
 
+    // Validar espacios en el usuario
+    if (preg_match('/\s/', $_REQUEST['usuario'] ?? '')) {
+        $aError['usuario'] = "El usuario no puede contener espacios en blanco.";
+    }
+
+    // Validar espacios en el password
+    if (preg_match('/\s/', $_REQUEST['password'] ?? '')) {
+        $aError['password'] = "El password no puede contener espacios en blanco.";
+    }
+
     foreach ($aError as $value) {
         if (!empty($value)) {
             $entradaOK = false;
@@ -76,9 +86,9 @@ if ($entradaOK) {
     VALUES (:usuario, SHA2(:contrasena, 256), :descripcion, NOW(), 1, 'usuario')
     sql);
     $insertarUsuario->execute([
-        ':usuario' => trim($_REQUEST["usuario"]),
-        ':contrasena' => trim($_REQUEST["usuario"]) . trim($_REQUEST["contrasena"]),
-        ':descripcion' => trim($_REQUEST["descripcion"])
+        ':usuario' => $_REQUEST["usuario"],
+        ':contrasena' => $_REQUEST["usuario"] . $_REQUEST["contrasena"],
+        ':descripcion' => $_REQUEST["descripcion"]
     ]);
 
     //volvemos a ejecutar el select del usuario para recoger sus datos y añadirlos a la sesion

@@ -41,6 +41,16 @@ if (isset($_REQUEST["login"])) {
     //$aError["contrasena"] = validacionFormularios::validarPassword($passwd, $maximo, $minimo, $tipo, $obligatorio);
     $aError["contrasena"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["contrasena"], 1000, 1, 1);
 
+    // Validar espacios en el usuario
+    if (preg_match('/\s/', $_REQUEST['usuario'] ?? '')) {
+        $aError['usuario'] = "El usuario no puede contener espacios en blanco.";
+    }
+
+    // Validar espacios en el password
+    if (preg_match('/\s/', $_REQUEST['password'] ?? '')) {
+        $aError['password'] = "El password no puede contener espacios en blanco.";
+    }
+
     foreach ($aError as $value) {
         if (!empty($value)) {
             $entradaOK = false;
