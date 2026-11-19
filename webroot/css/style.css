@@ -245,9 +245,9 @@ form[name="formulario"] h3 {
 }
 
 form[name="formulario"] label {
-    font-weight: 500;
+    font-weight: bold;
     color: #475569;
-    font-size: 0.95rem;
+    font-size: 1.3rem;
 }
 
 .buscador input[type="text"],
@@ -327,6 +327,18 @@ form[name="formulario"] span[style*="color:red;"] {
     margin-top: 4px;
 }
 
+.inputBloqueado{
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: #808080;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 h3 {
         color: #474a8a;
         margin-top: 25px;
@@ -353,6 +365,11 @@ pre {
 
 li{
     color: black;
+}
+
+hr{
+    height: 3px;width: 100%;
+    background-color: red;
 }
 
 footer {
