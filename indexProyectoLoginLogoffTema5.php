@@ -37,7 +37,7 @@ if (isset($_REQUEST['btnSignIn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DWES. Juan Rivera Ordoñez</title>
     <link rel="stylesheet" href="./webroot/css/style.css">
-    <script src="../webroot/script/script.js" defer></script>
+    <script src="./webroot/script/script.js" defer></script>
     <style>
         header form.idiomas {
             position: relative;

@@ -84,7 +84,23 @@ if (isset($_REQUEST['btnVolver'])) {
                  // PHPINFO()
                 echo "<h2>Informacion de phpinfo</h2>";
                 echo "<p>Mediante la función <code>phpinfo()</code> se obtiene informacion detallada sobre la configuracion actual de PHP en el servidor.</p>";
-                echo "<a href='?ver_phpinfo=1' target='_blank' class='btn-phpinfo'>Ejecutar y ver phpinfo() completo en nueva pestaña</a>";
+                // Aqui me encuentro con un problema: cuando saco phpinfo() los estilos de mi pagina los modifica completamente, porque tiene su propio <style>
+
+                // ob_start atrapa el html que genera el phpinfo
+                ob_start();
+                phpinfo();
+                $phpinfo = ob_get_clean();
+
+                // 1. Elimina la etiqueta <style> completa de phpinfo con una expresion regular
+                $phpinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo);
+
+                // lo muestro dentro de un <div> para mantener mis estilos y mi linea de programacion.
+                echo '<div class="contenedor-phpinfo">' . $phpinfo . '</div>';
+
+                // Informacion encontrada en:
+                // Comportamiento de phpinfo() y control de salida: https://www.php.net/manual/en/outcontrol.output-buffering.php
+                // Como encapsular el <style> y cambiarlo https://stackoverflow.com/questions/52865732/how-to-embed-phpinfo-within-a-page-without-affecting-that-pages-css-styles
+
                 ?>
 
         </main>

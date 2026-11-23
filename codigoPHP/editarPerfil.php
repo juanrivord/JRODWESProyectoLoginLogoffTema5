@@ -173,10 +173,16 @@ if ($entradaOK) {
 
             <hr>
 
+            <?php
+            // Mensaje de confirmacion en UNA sola linea: un string de JavaScript no puede contener
+            // saltos de linea reales (provocaban un error de sintaxis y el confirm no llegaba a salir).
+            // json_encode genera un string JS valido y htmlspecialchars lo protege dentro del atributo.
+            $mensajeConfirmacion = "¡ATENCIÓN!\n\nVas a eliminar la cuenta de " . $aUsuario['T01_CodUsuario']
+                . ".\nSe borrarán todos tus datos de forma permanente y esta acción NO se puede deshacer."
+                . "\n\n¿Seguro que quieres eliminar tu cuenta?";
+            ?>
             <input type="submit" name="btnEliminarCuenta" class="btn btn-cancelar" value="Eliminar Cuenta"
-                onclick="return confirm('¡ATENCIÓN!\n\nVas a eliminar la cuenta de <?php echo $aUsuario['T01_CodUsuario']; ?>
-                .\nSe borrarán todos tus datos de forma permanente y esta acción NO se puede deshacer
-                .\n\n¿Seguro que quieres eliminar tu cuenta?');" />
+                onclick="return confirm(<?php echo htmlspecialchars(json_encode($mensajeConfirmacion, JSON_UNESCAPED_UNICODE), ENT_QUOTES); ?>);" />
 
         </form>
 
