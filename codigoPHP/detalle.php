@@ -29,7 +29,8 @@ if (isset($_REQUEST['btnVolver'])) {
         <style>
             form.volver{
                 position: absolute;
-                left: 0;top: 0;
+                width: 150px;height: 20px;
+                right: 0;top: -40px;
                 background: transparent;
                 box-shadow: none;
 
