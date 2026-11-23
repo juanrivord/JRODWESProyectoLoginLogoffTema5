@@ -26,6 +26,21 @@ if (isset($_REQUEST['btnVolver'])) {
         <meta charset="UTF-8">
         <title>Detalle</title>
         <link rel="stylesheet" href="../webroot/css/style.css">
+        <style>
+            form.volver{
+                position: absolute;
+                left: 0;top: 0;
+                background: transparent;
+                box-shadow: none;
+
+                & #volver{
+                    background: red;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-weight: bold;
+                }
+            }
+            
+        </style>
     </head>
     <header id="inicio">
         <h1>Proyecto Login Logoff Tema 5</h1>
@@ -35,8 +50,8 @@ if (isset($_REQUEST['btnVolver'])) {
 
         <main>
 
-         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" novalidate>
-            <input type="submit" name="btnVolver" value="Volver"/>
+         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" name="formulario" class="volver" novalidate>
+            <input type="submit" name="btnVolver" id="volver" value="Volver"/>
         </form>
 
         <?php              
