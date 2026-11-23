@@ -85,13 +85,15 @@ if (isset($_REQUEST['btnVolver'])) {
                 echo "<h2>Informacion de phpinfo</h2>";
                 echo "<p>Mediante la función <code>phpinfo()</code> se obtiene informacion detallada sobre la configuracion actual de PHP en el servidor.</p>";
                 // Aqui me encuentro con un problema: cuando saco phpinfo() los estilos de mi pagina los modifica completamente, porque tiene su propio <style>
+                // Mi solucion es encapsular el html que genera el phpinfo con la funcion ob_start y ob_get_clean, una vez hecho eso, extraigo el contenido unicamente
+                // de <body> con preg_replace y lo muestro en un <div> a parte.
 
                 // ob_start atrapa el html que genera el phpinfo
                 ob_start();
                 phpinfo();
                 $phpinfo = ob_get_clean();
 
-                // 1. Elimina la etiqueta <style> completa de phpinfo con una expresion regular
+                // Extraigo el contenido de las etiquetas <body> unicamente
                 $phpinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo);
 
                 // lo muestro dentro de un <div> para mantener mis estilos y mi linea de programacion.
