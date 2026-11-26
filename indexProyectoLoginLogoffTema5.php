@@ -13,6 +13,8 @@ if (isset($_REQUEST['idioma']) && in_array($_REQUEST['idioma'], $idiomasValidos)
 // Si no existe la cookie, ponemos español por defecto
 if (!isset($_COOKIE['idioma'])) {
     setcookie('idioma', $idiomasValidos[0], time() + $weekTime);
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
 }
 
 if (isset($_REQUEST['btnLogin'])) {
